@@ -16,7 +16,7 @@ const StartupForm = () => {
   const [pitch, setPitch] = useState("");
   const router = useRouter();
 
-  const handleFormSubmit = async (prevState: any, formData: FormData) => {
+  const handleFormSubmit = async (prevState: unknown, formData: FormData) => {
     try {
       const formValues = {
         title: formData.get("title") as string,
@@ -54,18 +54,18 @@ const StartupForm = () => {
           description: "Please check your inputs and try again",
         });
 
-        return { ...prevState, error: "Validation field", status: "ERROR" };
+        return { prevState, error: "Validation field", status: "ERROR" };
       }
 
       toast.error("Error", {
         description: "Unexpected Error",
       });
 
-      return { ...prevState, error: "Unexpected Error", status: "ERROR" };
+      return { prevState, error: "Unexpected Error", status: "ERROR" };
     }
   };
 
-  const [state, formAction, isPending] = useActionState(handleFormSubmit, {
+  const [, formAction, isPending] = useActionState(handleFormSubmit, {
     error: "",
     status: "INITIAL",
   });
