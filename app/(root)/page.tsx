@@ -2,7 +2,7 @@ import { auth } from "@/auth";
 import SearchForm from "@/components/SearchForm";
 import StartupCard, { StartupTypeCard } from "@/components/StartupCard";
 import { STARTUPS_QUERY } from "@/lib/queries";
-import { sanityFetch, SanityLive } from "@/sanity/lib/live";
+import { sanityFetch } from "@/sanity/lib/live";
 
 export default async function Home({
   searchParams,
@@ -47,8 +47,6 @@ export default async function Home({
           )}
         </ul>
       </section>
-
-      <SanityLive />
     </>
   );
 }
